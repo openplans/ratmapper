@@ -1,0 +1,7 @@
+<h2>Stations</h2>
+
+<ul>
+<% for station in @stops %>
+  <li><%= link_to station.name, station %></li>
+<% end %>
+</ul>

@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111028172300) do
+ActiveRecord::Schema.define(:version => 20111028183919) do
+
+  create_table "incidents", :force => true do |t|
+    t.integer  "stop_id"
+    t.string   "kind"
+    t.string   "title"
+    t.text     "description"
+    t.datetime "happened_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "stops", :force => true do |t|
     t.string   "stop_id"

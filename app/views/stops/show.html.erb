@@ -1,0 +1,7 @@
+<h2><%= @stop.name %></h2>
+
+<ul>
+<% for incident in @incidents %>
+  <li><%= link_to incident.title, incident %></li>
+<% end %>
+</ul>
