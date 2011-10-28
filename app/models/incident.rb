@@ -6,5 +6,6 @@ class Incident < ActiveRecord::Base
   validates :stop_id, :presence => true
   validates :kind, :inclusion => { :in => Kinds }
   validates :happened_at, :presence => true
+  validates :title, :presence => true
   
 end

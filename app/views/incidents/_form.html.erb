@@ -1,0 +1,29 @@
+<%= form_for [@stop, @incident], :url => stop_incidents_url(@stop) do |form| %>
+
+  <ul>
+    <li>
+      <%= form.label :kind %> <br>
+      <%= form.select :kind, Incident::Kinds %>
+    </li>
+    
+    <li>
+      <%= form.label :title, "Summary" %> <br>
+      <%= form.text_field :title %>
+    </li>
+    
+    <li>
+      <%= form.label :description, "Details (optional)" %> <br>
+      <%= form.text_area :description, :rows => 5 %>
+    </li>
+    
+    <li>
+      <%= form.label :happened_at, "Time" %> <br>
+      <%= form.datetime_select :happened_at, :ampm => true %>
+    </li>
+    
+    <li>
+      <%= form.submit %>
+    </li>
+  </ul>
+  
+<% end %>

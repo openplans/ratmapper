@@ -1,9 +1,12 @@
 <h2><%= @stop.name %></h2>
+<strong><%= link_to "Report something", new_stop_incident_path(@stop) %></strong>
+
+<div id="map" data-lat="<%= @stop.lat %>" data-lon="<%= @stop.lon %>" data-label="<%= @stop.name %>"></div>
+
+<h3>Reported Incidents</h3>
 
 <ul>
 <% for incident in @incidents %>
-  <li><%= link_to incident.title, incident %></li>
+  <li><%= link_to incident.title, stop_incident_path(@stop, incident) %></li>
 <% end %>
 </ul>
-
-<div id="map" data-lat="<%= @stop.lat %>" data-lon="<%= @stop.lon %>" data-label="<%= @stop.name %>"></div>

@@ -9,3 +9,8 @@
 #wrapper {
   padding : 0 20px;
 }
+
+div.field_with_errors {
+  color   : red;
+  display : inline;
+}

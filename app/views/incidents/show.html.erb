@@ -1,0 +1,8 @@
+<h2><%= link_to @stop.name, @stop %>: <%= @incident.title %></h2>
+
+<%= content_tag :p, @incident.description if @incident.description.present? %>
+
+<ul>
+  <li>Occurred: <%= @incident.happened_at %></li>
+  <li>Reported: <%= @incident.created_at %></li>
+</ul>
