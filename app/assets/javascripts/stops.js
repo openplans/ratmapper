@@ -1,7 +1,7 @@
 $(function(){
   
-  if ( $("#map").size() > 0 ) {
-    var container      = $("#map"),
+  $("body#stops.show").find("#map").each(function() {
+    var container     = $(this),
         stationLatLng = new L.LatLng( container.data("lat"), container.data("lon") ),
         map           = new L.Map('map');
     
@@ -11,6 +11,6 @@ $(function(){
         attribution: 'Tiles Courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a> <img src="http://developer.mapquest.com/content/osm/mq_logo.png">'
       })
     ).addLayer( new L.Marker(stationLatLng));
-  }
-  
+  });
+
 });

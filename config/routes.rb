@@ -3,5 +3,5 @@ Stationgrade::Application.routes.draw do
     resources :incidents, :only => [:new, :create, :show]
   end
   
-  root :to => "stops#index"
+  root :to => "home#index"
 end
