@@ -5,3 +5,5 @@
   <li><%= link_to incident.title, incident %></li>
 <% end %>
 </ul>
+
+<div id="map" data-lat="<%= @stop.lat %>" data-lon="<%= @stop.lon %>" data-label="<%= @stop.name %>"></div>
