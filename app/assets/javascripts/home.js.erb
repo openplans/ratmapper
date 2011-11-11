@@ -1,3 +1,5 @@
+<% url_help = Stationgrade::Application.routes.url_helpers %>
+
 $(function(){
   
   $("body#home.index").find("#map").each(function() {
@@ -10,6 +12,19 @@ $(function(){
     var positionError = function (message) {
       var center        = new L.LatLng( "40.717304", "-73.956872" )
       initMap(center);
+    };
+    
+    var setupMarker = function(marker, properties) {
+      marker._id = properties.id;
+      
+      marker.on("click", function(event){
+        var marker = this;
+        
+        $.get( '<%= url_help.stop_path("CHANGEME") %>'.replace(/CHANGEME/, marker._id), function(data){
+          marker.bindPopup(data.view);
+          marker.openPopup();
+        }, "json");
+      });
     };
     
     var initMap = function( center ) {
@@ -27,9 +42,7 @@ $(function(){
         var geojson = new L.GeoJSON();
 
         geojson.on('featureparse', function(e) {
-          if (e.properties && e.properties.popupContent){
-            e.layer.bindPopup(e.properties.popupContent);
-          }
+          setupMarker(e.layer, e.properties)
         });
 
         geojson.addGeoJSON(data);

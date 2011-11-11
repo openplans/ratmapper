@@ -1,0 +1,8 @@
+<h2>
+  <%= image_tag line_icon_url(stop.line), :alt => "#{stop.line} Train", :title => "#{stop.line} Train" %>
+  <%= stop.name %>
+</h2>
+
+<p>
+  <%= link_to pluralize(incidents.count, "reported incidents"), stop_path(stop) %>
+</p>

@@ -7,5 +7,12 @@ class StopsController < ApplicationController
   def show
     @stop      = Stop.find params[:id]
     @incidents = @stop.incidents
+    
+    respond_to do |format|
+      format.html
+      format.json {
+        render :json => { :view => render_to_string(:partial => "popup.html", :locals => { :stop => @stop, :incidents => @incidents }) } 
+      }
+    end
   end
 end

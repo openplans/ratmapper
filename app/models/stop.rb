@@ -4,6 +4,14 @@ class Stop < ActiveRecord::Base
   
   has_many :incidents
   
+  def display_name
+    "#{name} - #{line} Train"
+  end
+  
+  def line
+    "#{stop_id[0]}"
+  end
+  
   def as_geo_json
     {
       :type => "Feature", 
@@ -14,8 +22,7 @@ class Stop < ActiveRecord::Base
       :properties => {
         :id             => id,
         :name           => name,
-        :incident_count => incidents.count,
-        :popupContent   => name
+        :incident_count => incidents.count
       }
     }
   end
