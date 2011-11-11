@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>StationGrade</title>
+  <title>RatMapper</title>
+  
+  <link rel="icon" 
+        type="image/png" 
+        href="<%= image_path 'favicon.png' %>">
   
   <%= stylesheet_link_tag "/leaflet/leaflet.css" %>
   <!--[if lte IE 8]><%= stylesheet_link_tag "/leaflet/leaflet.ie.css" %><![endif]-->
@@ -15,7 +19,10 @@
 
 <div id="wrapper">
   <div id="header">
-    <h1>StationGrade / RatMapper</h1>
+    <h1><%= link_to "RatMapper", root_path %></h1>
+    <ul id="nav">
+      <li><%= link_to "All Stations", stops_path %></li>
+    </ul>
   </div>
   
   <div id="content">

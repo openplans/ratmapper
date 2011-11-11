@@ -1,12 +1,28 @@
-<h2><%= @stop.name %></h2>
-<strong><%= link_to "Report something", new_stop_incident_path(@stop) %></strong>
+<h2 style="background: transparent url('<%= line_icon_url(@stop.line) %>') no-repeat scroll top left;">
+  <%= @stop.display_name %>
+</h2>
 
 <div id="map" data-lat="<%= @stop.lat %>" data-lon="<%= @stop.lon %>" data-label="<%= @stop.name %>"></div>
 
 <h3>Reported Incidents</h3>
+<strong><%= link_to "Report something", new_stop_incident_path(@stop) %></strong>
 
 <ul>
 <% for incident in @incidents %>
-  <li><%= link_to incident.title, stop_incident_path(@stop, incident) %></li>
+  <li class="<%= incident.kind %> <%= cycle("odd", "even") %>">
+    <div class='img_wrap'>
+      <%= image_tag "#{incident.kind}.png" %>      
+    </div>
+    
+    <div>
+      <strong>
+        <%= incident.title.present? ? incident.title : incident.happened_at_display %>
+      </strong>
+    </div>
+
+
+    <%= content_tag :span, "@#{incident.happened_at_display}", :class => "date" if incident.title.present? %>
+    <%= content_tag :div, simple_format(incident.description), :class => "description" if incident.description.present? %>
+  </li>
 <% end %>
 </ul>

@@ -7,4 +7,7 @@ class Incident < ActiveRecord::Base
   validates :kind, :inclusion => { :in => Kinds }
   validates :happened_at, :presence => true
   
+  def happened_at_display
+    self.happened_at.strftime("%b %-d '%y %l:%M %P")
+  end
 end

@@ -2,10 +2,10 @@ class Stop < ActiveRecord::Base
 
   scope :station, where(:station => true)
   
-  has_many :incidents
+  has_many :incidents, :order => "happened_at desc"
   
   def display_name
-    "#{name} - #{line} Train"
+    "#{name} - #{line} Platform"
   end
   
   def line
