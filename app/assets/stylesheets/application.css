@@ -35,6 +35,24 @@ body {
   padding : 0 0 10px 75px;
 }
 
+#popup_content {
+  width :315px;
+}
+
+#popup_content textarea, #popup_content input[type='text'] {
+  width : 100%;
+}
+
+#popup_content .new_incident_form {
+  border-top : 1px dashed #ccc;
+  padding-top : 15px;
+}
+
+#popup_content p.alert {
+  border : 1px dotted red;
+  margin-top : 0;
+}
+
 div.field_with_errors {
   color   : red;
   display : inline;

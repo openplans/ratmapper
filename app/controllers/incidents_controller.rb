@@ -19,7 +19,9 @@ class IncidentsController < ApplicationController
         format.html { redirect_to stop_path(@stop) }
         format.json { 
           render :json => { 
-            :view => render_to_string(:partial => "stops/popup.html", :locals => { :stop => @stop, :incidents => @stop.incidents }) 
+            :view => render_to_string(:partial => "stops/popup.html", :locals => { 
+              :stop => @stop, :incidents => @stop.incidents, :incident => Incident.new(params[:incident]) 
+            }) 
           }
         } 
       end
@@ -29,6 +31,13 @@ class IncidentsController < ApplicationController
       respond_to do |format|
         flash[:alert] = "Hey, was it a rat or garbage?" 
         format.html { render :action => :new }
+        format.json { 
+          render :json => { 
+            :view => render_to_string(:partial => "stops/popup.html", :locals => { 
+              :stop => @stop, :incidents => @stop.incidents, :incident => @incident 
+            }) 
+          }
+        }
       end
     end
   end

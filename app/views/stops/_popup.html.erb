@@ -1,15 +1,22 @@
-<h2>
-  <%= image_tag line_icon_url(stop.line), :alt => "#{stop.line} Platform", :title => "#{stop.line} Platform" %>
-  <%= stop.name %>
-</h2>
+<div id="popup_content">
+  <h2>
+    <%= image_tag line_icon_url(stop.line), :alt => "#{stop.line} Platform", :title => "#{stop.line} Platform" %>
+    <%= stop.name %>
+  </h2>
 
-<p>
-  <%= link_to pluralize(incidents.count, "reported incidents"), stop_path(stop) %>
-</p>
+  <p>
+    <%= link_to pluralize(incidents.count, "reported incident"), stop_path(stop) %>
+  </p>
 
-<div class="new_incident">
-  <a>Report a rat</a>
-  <div class="new_incident_form" style="display:none">
-    <%= render "incidents/form.html", :stop => stop, :incident => stop.incidents.build %>    
-  </div>
+  <div class="new_incident">
+    <a>Report a rat</a>
+    <% if flash[:alert].present? %>
+    <div class="new_incident_form" >
+      <%= content_tag :p, flash[:alert], :class => "alert" %>
+    <% else %>
+    <div class="new_incident_form" style="display:none">
+    <% end %>
+      <%= render "incidents/form.html", :stop => stop, :incident => incident %>    
+    </div>
+  </div>  
 </div>

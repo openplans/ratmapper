@@ -21,7 +21,7 @@ $(function(){
         var marker = this;
         
         $.get( '<%= url_help.stop_path("CHANGEME") %>'.replace(/CHANGEME/, marker._id), function(data){
-          marker.bindPopup(data.view);
+          marker.bindPopup(data.view, { maxWidth : 400 });
           marker.openPopup();
         }, "json");
       });

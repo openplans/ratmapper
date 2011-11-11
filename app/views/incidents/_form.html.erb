@@ -3,23 +3,25 @@
   <ul>
     <li>
       <% for kind in Incident::Kinds %>
-      <%= form.label :kind, "<input value='#{kind}' id='incident_kind_#{kind}' name='incident[kind][]' type='checkbox'> #{kind}".html_safe, :value => kind %> 
+      <%= form.label :kind, 
+        "<input value='#{kind}' id='incident_kind_#{kind}' name='incident[kind][]' type='checkbox' #{"checked" if kind=="rat"}> #{image_tag "#{kind}.png"} ".html_safe, 
+        :value => kind %> 
       <% end %>
     </li>
     
     <li>
-      <%= form.label :title, "Summary" %> <br>
+      <%= form.label :title, "Summary (optional)" %> <br>
       <%= form.text_field :title %>
     </li>
     
     <li>
       <%= form.label :description, "Details (optional)" %> <br>
-      <%= form.text_area :description, :rows => 5 %>
+      <%= form.text_area :description, :rows => 5, :cols => 10 %>
     </li>
     
     <li>
       <%= form.label :happened_at, "Time" %> <br>
-      <%= form.datetime_select :happened_at, :ampm => true %>
+      <%= form.datetime_select :happened_at, :ampm => true, :use_month_numbers => true, :end_year => Date.today.year %>
     </li>
     
     <li>

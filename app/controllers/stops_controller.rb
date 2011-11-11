@@ -11,7 +11,11 @@ class StopsController < ApplicationController
     respond_to do |format|
       format.html
       format.json {
-        render :json => { :view => render_to_string(:partial => "popup.html", :locals => { :stop => @stop, :incidents => @incidents }) } 
+        render :json => { 
+          :view => render_to_string(:partial => "popup.html", :locals => { 
+            :stop => @stop, :incidents => @incidents, :incident => @stop.incidents.build(:type => "rat") 
+          }) 
+        } 
       }
     end
   end
