@@ -1,9 +1,10 @@
-<%= form_for [@stop, @incident], :url => stop_incidents_url(@stop) do |form| %>
+<%= form_for [stop, incident], :url => stop_incidents_url(stop) do |form| %>
 
   <ul>
     <li>
-      <%= form.label :kind %> <br>
-      <%= form.select :kind, Incident::Kinds %>
+      <% for kind in Incident::Kinds %>
+      <%= form.label :kind, "<input value='#{kind}' id='incident_kind_#{kind}' name='incident[kind][]' type='checkbox'> #{kind}".html_safe, :value => kind %> 
+      <% end %>
     </li>
     
     <li>

@@ -49,12 +49,28 @@ $(function(){
         map.addLayer(geojson);
 
       });
+      
+      // toggle the new incident form on the station popup
+      // leaflet steals the click event, grrrr
+      $("div.new_incident > a").live( "mouseup", function(e){
+        e.preventDefault();
+        $(this).hide().parent().find(".new_incident_form").show();
+      });
+
+      // form submit within popup, refresh station info
+      $("form#new_incident").live( "submit", function(e){
+        e.preventDefault();
+        var form = $(this);
+        $.post(form.attr("action"), form.serialize(), function(data){
+          form.parents(".leaflet-popup-content").html(data.view);
+        }, "json");
+      });
     };
     
     navigator.geolocation ? 
       navigator.geolocation.getCurrentPosition(positionSuccess, positionError) : 
       positionError('not supported');
     
-    
+
   });
 });

@@ -6,3 +6,10 @@
 <p>
   <%= link_to pluralize(incidents.count, "reported incidents"), stop_path(stop) %>
 </p>
+
+<div class="new_incident">
+  <a>Report a rat</a>
+  <div class="new_incident_form" style="display:none">
+    <%= render "incidents/form.html", :stop => stop, :incident => stop.incidents.build %>    
+  </div>
+</div>
