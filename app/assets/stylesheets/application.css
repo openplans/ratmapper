@@ -2,12 +2,37 @@
  * This is a manifest file that'll automatically include all the stylesheets available in this directory
  * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
  * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *= require reset
  *= require_self
  *= require_tree . 
 */
 
+html {
+  height : 100%;
+}
+
+body {
+  font-family : Helvetica, sans-serif;
+  font-size   : 12px;
+  height      : 100%;
+}
+
 #wrapper {
-  padding : 0 20px;
+  height : 100%;
+}
+
+#header {
+  margin : 5px;
+  padding-left : 75px;
+  font-size : 14px;
+  font-weight : bold;
+  height : 95px;
+  background: transparent url('/assets/rat.png') no-repeat scroll top left;
+}
+
+#content {
+  margin : 5px;
+  padding : 0 0 10px 75px;
 }
 
 div.field_with_errors {
@@ -15,6 +40,28 @@ div.field_with_errors {
   display : inline;
 }
 
+h1 {
+  font-size : 28px;
+  font-weight : bold;
+}
+
+h1 a {
+  color : #000;
+}
+
 h2 {
+  font-size : 16px;
+  font-weight : bold;
+  margin-bottom : 5px;
   vertical-align: top;
+}
+
+a {
+  color: rgb(49,128,204);
+  cursor : pointer;
+  text-decoration : none;
+}
+
+a:hover {
+  text-decoration : underline;
 }
