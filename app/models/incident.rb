@@ -1,9 +1,9 @@
 class Incident < ActiveRecord::Base
   Kinds = %w{rat garbage}
   
-  belongs_to :stop
+  belongs_to :station, :inverse_of => :incidents
 
-  validates :stop_id, :presence => true
+  validates :station, :presence => true
   validates :kind, :inclusion => { :in => Kinds }
   validates :happened_at, :presence => true
   
