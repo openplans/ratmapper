@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120114221915) do
+ActiveRecord::Schema.define(:version => 20120114223754) do
 
   create_table "incidents", :force => true do |t|
     t.integer  "stop_id"
@@ -19,6 +19,14 @@ ActiveRecord::Schema.define(:version => 20120114221915) do
     t.string   "title"
     t.text     "description"
     t.datetime "happened_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "stations", :force => true do |t|
+    t.decimal  "latitude",   :precision => 10, :scale => 0
+    t.decimal  "longitude",  :precision => 10, :scale => 0
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
