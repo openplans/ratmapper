@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111028183919) do
+ActiveRecord::Schema.define(:version => 20120114221915) do
 
   create_table "incidents", :force => true do |t|
     t.integer  "stop_id"
@@ -19,17 +19,6 @@ ActiveRecord::Schema.define(:version => 20111028183919) do
     t.string   "title"
     t.text     "description"
     t.datetime "happened_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "stops", :force => true do |t|
-    t.string   "stop_id"
-    t.string   "name"
-    t.decimal  "lat"
-    t.decimal  "lon"
-    t.boolean  "station"
-    t.string   "parent_station"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
