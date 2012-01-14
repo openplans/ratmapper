@@ -4,4 +4,6 @@ class Station < ActiveRecord::Base
   validates :longitude, :presence => true
   
   has_many :incidents, :inverse_of => :station
+  has_many :station_routes
+  has_many :routes, :through => :station_routes
 end

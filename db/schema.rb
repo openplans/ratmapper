@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120114231725) do
+ActiveRecord::Schema.define(:version => 20120114231945) do
 
   create_table "incidents", :force => true do |t|
     t.string   "kind"
@@ -30,6 +30,16 @@ ActiveRecord::Schema.define(:version => 20120114231725) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "station_routes", :force => true do |t|
+    t.integer  "station_id"
+    t.integer  "route_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "station_routes", ["route_id"], :name => "index_station_routes_on_route_id"
+  add_index "station_routes", ["station_id"], :name => "index_station_routes_on_station_id"
 
   create_table "stations", :force => true do |t|
     t.decimal  "latitude",   :precision => 10, :scale => 0
